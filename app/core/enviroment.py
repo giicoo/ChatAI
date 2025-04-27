@@ -14,6 +14,7 @@ def get_env_filename():
 class EnvironmentSettings(BaseSettings):
     API_VERSION: str
     APP_NAME: str
+    MONGO_URI: str
    
 
     class Config:
@@ -24,3 +25,5 @@ class EnvironmentSettings(BaseSettings):
 @lru_cache
 def get_environment_variables():
     return EnvironmentSettings()
+
+settings = get_environment_variables()
