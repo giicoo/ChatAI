@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Optional
 from beanie import PydanticObjectId
 
-class User(BaseModel):
+class UserSheme(BaseModel):
     id: Optional[PydanticObjectId] = None
     telegram_id: int
     username: str
@@ -15,7 +15,7 @@ class User(BaseModel):
         json_encoders = {PydanticObjectId: str}
 
 
-class UserDocument(User, Document):
+class UserDocument(UserSheme, Document):
     class Settings:
         collection = "users"
 
@@ -24,7 +24,7 @@ class UserIn(BaseModel):
    telegram_id: int
    username: str
    
-class UserOut(User):
+class UserOut(BaseModel):
     id: Optional[PydanticObjectId] 
     telegram_id: int
     username: str

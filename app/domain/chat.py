@@ -4,7 +4,8 @@ from typing import Literal
 
 @dataclass
 class Chat:
-    telegram_id: int
-    model: Literal["llama2"]
-    title: str
+    id: str = None
+    telegram_id: int = 0
+    model: Literal["llama2"] = "llama2"
+    title: str = None
     created_at: datetime = field(default_factory=datetime.now)

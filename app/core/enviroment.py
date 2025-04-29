@@ -15,6 +15,7 @@ class EnvironmentSettings(BaseSettings):
     API_VERSION: str
     APP_NAME: str
     MONGO_URI: str
+    OLLAMA_URI: str
    
 
     class Config:

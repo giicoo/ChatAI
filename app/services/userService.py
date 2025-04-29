@@ -1,5 +1,6 @@
+from app.domain.user import User
 from app.repository.user import UserRepository
-from app.schemas.users import User, UserDocument
+from app.schemas.users import UserDocument
 
 
 class UserService:

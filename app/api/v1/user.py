@@ -2,8 +2,9 @@ import logging
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 
+from app.domain.user import User
 from app.repository.user import UserRepository
-from app.schemas.users import User, UserIn, UserOut
+from app.schemas.users import UserIn, UserOut
 from app.services.userService import UserService
 
 

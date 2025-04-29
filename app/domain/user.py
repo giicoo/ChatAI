@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-import datetime
+from datetime import datetime
 
 @dataclass
 class User:
-    id: str
-    telegram_id: int
-    username: str
+    id: str = None
+    telegram_id: int = 0
+    username: str = None
     created_at: datetime = field(default_factory=datetime.now)

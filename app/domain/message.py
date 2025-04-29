@@ -1,11 +1,11 @@
 from dataclasses import dataclass, field
-import datetime
+from datetime import datetime
 from typing import Literal
 
 @dataclass
 class Message:
-    id: str
-    chat_id: str
-    role: Literal["user", "assistant"]
-    content: str
+    id: str = None
+    chat_id: str = None
+    role: Literal["user", "assistant"] = "user"
+    content: str = None
     created_at: datetime = field(default_factory=datetime.now)

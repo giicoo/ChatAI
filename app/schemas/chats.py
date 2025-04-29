@@ -5,7 +5,7 @@ from typing import Optional
 from beanie import PydanticObjectId
 
 
-class Chat(BaseModel):
+class ChatSheme(BaseModel):
     id: Optional[PydanticObjectId] = None
     telegram_id: int
     model: str
@@ -17,7 +17,7 @@ class Chat(BaseModel):
         json_encoders = {PydanticObjectId: str}
 
 
-class ChatDocument(Chat, Document):
+class ChatDocument(ChatSheme, Document):
     class Settings:
         collection = "chats"
 

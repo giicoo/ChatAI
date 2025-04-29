@@ -1,6 +1,7 @@
 from typing import List
+from app.domain.chat import Chat
 from app.repository.chat import ChatRepository
-from app.schemas.chats import Chat, ChatDocument
+from app.schemas.chats import ChatDocument
 
 
 class ChatService:
