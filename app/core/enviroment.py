@@ -1,30 +1,17 @@
-from functools import lru_cache
 import os
+from dotenv import load_dotenv
 
-from pydantic_settings import BaseSettings
+dotenv_path = os.path.join(os.path.dirname(__file__), '../../.env')
+load_dotenv(dotenv_path=dotenv_path, override=True)
 
+# Теперь можно получить переменные окружения
+API_VERSION = os.getenv("API_VERSION")
+APP_NAME = os.getenv("APP_NAME")
+MONGO_URI = os.getenv("MONGO_URI")
+OLLAMA_URI = os.getenv("OLLAMA_URI")
 
-@lru_cache
-def get_env_filename():
-    runtime_env = os.getenv("ENV")
-    return f".env.{runtime_env}" if runtime_env else ".env"
-
-
-
-class EnvironmentSettings(BaseSettings):
-    API_VERSION: str
-    APP_NAME: str
-    MONGO_URI: str
-    OLLAMA_URI: str
-   
-
-    class Config:
-        env_file = get_env_filename()
-        env_file_encoding = "utf-8"
-
-
-@lru_cache
-def get_environment_variables():
-    return EnvironmentSettings()
-
-settings = get_environment_variables()
+# Печатаем для проверки
+print(f"API_VERSION: {API_VERSION}")
+print(f"APP_NAME: {APP_NAME}")
+print(f"MONGO_URI: {MONGO_URI}")
+print(f"OLLAMA_URI: {OLLAMA_URI}")

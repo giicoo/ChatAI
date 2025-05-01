@@ -2,6 +2,7 @@ import logging
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 
+from app.core.log import Logger
 from app.domain.user import User
 from app.repository.user import UserRepository
 from app.schemas.users import UserIn, UserOut
@@ -21,7 +22,7 @@ async def create_user(user: UserIn):
         user_id = await userService.create_user(User(telegram_id=user.telegram_id,
                                                      username=user.username))
     except Exception as e:
-        logging.error(e)
+        Logger.error(e)
         raise HTTPException(status_code=500, detail=f"server error: {e}")
 
     return JSONResponse({"user_id":user_id}, 200)
@@ -35,6 +36,6 @@ async def get_chat(telegram_id: int):
                            username=user.username,
                            created_at=user.created_at)
     except Exception as e:
-        logging.error(e)
+        Logger.error(e)
         raise HTTPException(status_code=500, detail=f"server error: {e}")
     return response
